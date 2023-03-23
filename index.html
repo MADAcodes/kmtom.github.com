@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Unit Converter</title>
+	<style>
+		body {
+			background-color: black;
+			color: white;
+			text-align: center;
+		}
+		
+		h1 {
+			font-size: 48px;
+			margin-top: 50px;
+		}
+		
+		input[type="number"] {
+			padding: 10px;
+			margin: 20px;
+			border: none;
+			border-radius: 10px;
+			font-size: 24px;
+			background-color: #222;
+			color: white;
+			text-align: center;
+			width: 300px;
+		}
+		
+    
+		button {
+			padding: 10px 20px;
+			margin: 20px;
+			border: none;
+			border-radius: 10px;
+			font-size: 24px;
+			background-color:white(241, 6, 6);
+			color: black;
+			text-align: center;
+			cursor: pointer;
+			box-shadow: 0px 0px 10px black;
+			transition: box-shadow 0.3s;
+		}
+		
+		button:hover {
+			box-shadow: 0px 0px 20px black;
+		}
+		
+		.neon {
+			text-shadow: 0px 0px 10px black, 0px 0px 20px black, 0px 0px 30px black, 0px 0px 40px black;
+		}
+		
+		.result-box {
+			margin: 20px auto;
+			padding: 20px;
+			border: 2px solid  black;
+			border-radius: 10px;
+			font-size: 36px;
+			max-width: 500px;
+			background-color:white(0, 255, 0, 0.5);
+			box-shadow: 0px 0px 20px #0f0;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<h1>Unit Converter</h1>
+	<label>
+		<input type="number" id="input" placeholder="Enter distance">
+	</label><br>
+	<label>
+		<input type="radio" name="conversion" value="km_to_m"> km to m
+	</label>
+	<label>
+		<input type="radio" name="conversion" value="m_to_km"> m to km
+	</label><br>
+	<button id="convert" class="neon">Convert</button>
+	<div class="result-box" id="result"></div>
+	<script>
+		const convertButton = document.getElementById("convert");
+		const resultBox = document.getElementById("result");
+		convertButton.addEventListener("click", () => {
+			const input = document.getElementById("input").value;
+			const conversion = document.querySelector('input[name="conversion"]:checked').value;
+			let result;
+			if (conversion === "km_to_m") {
+				result = input * 1000;
+			} else {
+				result = input / 1000;
+			}
+			resultBox.innerHTML = result.toFixed(2);
+		});
+	</script>
+</body>
+</html>
